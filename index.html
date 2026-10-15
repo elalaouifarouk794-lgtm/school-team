@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071a14">
+<title>Madrasati Football</title>
+<style>
+:root{--bg:#071a14;--panel:#10271f;--panel2:#17372b;--green:#b7f36b;--text:#f3f7f1;--muted:#a8b9af;--line:#29483a;--red:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#183d2d 0,transparent 38%),var(--bg);color:var(--text);font-family:Arial,"Segoe UI",sans-serif;line-height:1.5}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 14px;font-weight:700;background:var(--green);color:#102016}button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}button.danger{background:#522c2c;color:#ffe4e4}input,select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:#081b14;color:var(--text);margin:5px 0 12px}label{font-size:.9rem;color:var(--muted)}.wrap{width:min(1120px,92%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;background:var(--green);color:#0c2016;display:grid;place-items:center;font-size:25px}.brand h1{font-size:1.15rem;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:.83rem}.actions{display:flex;gap:8px;flex-wrap:wrap}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:stretch;padding:26px 0 34px}.hero-main,.hero-side,.card{background:linear-gradient(145deg,#143528,#0e241b);border:1px solid var(--line);border-radius:24px;padding:25px}.eyebrow{color:var(--green);font-weight:800;letter-spacing:.08em;font-size:.8rem}.hero h2{font-size:clamp(2rem,5vw,3.7rem);line-height:1.07;margin:12px 0}.hero p{color:var(--muted);max-width:580px}.score{display:flex;align-items:center;justify-content:space-around;gap:10px;margin:20px 0}.team{text-align:center;flex:1}.crest{width:54px;height:54px;margin:auto auto 8px;border-radius:16px;display:grid;place-items:center;background:var(--panel2);font-size:1.5rem}.score strong{font-size:2.3rem}.vs{color:var(--green);font-weight:900}.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:var(--muted);font-size:.8rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#091d15;border:1px solid var(--line);padding:16px;border-radius:16px}.stat b{display:block;font-size:1.8rem;color:var(--green)}.stat span{color:var(--muted);font-size:.85rem}.section{padding:18px 0 30px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}.section h3{font-size:1.45rem;margin:0}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.9rem}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.player-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.player{background:#0a1e16;border:1px solid var(--line);padding:11px 12px;border-radius:12px;display:flex;justify-content:space-between;gap:8px}.player small{color:var(--muted)}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}table{border-collapse:collapse;width:100%;min-width:460px;background:#0c2118}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:.85rem}tr:last-child td{border-bottom:0}.match{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border:1px solid var(--line);border-radius:14px;margin:8px 0;background:#0a1e16}.match .teams{font-weight:700}.match .date{color:var(--muted);font-size:.85rem}.match .result{font-size:1.2rem;font-weight:900;color:var(--green);white-space:nowrap}.admin{display:none}.admin.show{display:block}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.notice{padding:13px 15px;border-radius:12px;background:#382f17;color:#ffe9a7;border:1px solid #685a2d;font-size:.9rem}.footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.85rem}.empty{color:var(--muted);padding:12px}.rtl{direction:rtl;text-align:right}.rtl table th,.rtl table td{text-align:right}.hide{display:none!important}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:11px}.stat b{font-size:1.4rem}.hero-main,.hero-side,.card{padding:18px}.formgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <div class="brand"><div class="logo">⚽</div><div><h1>Madrasati Football</h1><p id="tagline">Résultats • Joueurs • Statistiques</p></div></div>
+  <div class="actions"><button class="secondary" id="langBtn" onclick="toggleLang()">العربية / Français</button><button onclick="document.getElementById('adminSection').scrollIntoView({behavior:'smooth'})" id="adminJump">Espace admin</button></div>
+</header>
+<main class="wrap" id="mainContent">
+  <section class="hero">
+    <div class="hero-main">
+      <span class="eyebrow" id="eyebrow">SAISON SCOLAIRE • FOOTBALL</span>
+      <h2 id="heroTitle">Le football, l'esprit d'équipe.</h2>
+      <p id="heroDesc">Suivez les résultats, les performances des joueurs et le classement de Madrasati Football au même endroit.</p>
+      <span class="pill" id="seasonPill">Saison en cours</span>
+      <div class="score">
+        <div class="team"><div class="crest">🟢</div><div id="teamAName">Équipe A</div></div>
+        <div class="vs">VS</div>
+        <div class="team"><div class="crest">⚫</div><div id="teamBName">Équipe B</div></div>
+      </div>
+      <p class="empty" id="latestResult">Aucun résultat officiel pour le moment. Le directeur peut ajouter un match dans l'espace admin.</p>
+    </div>
+    <div class="hero-side">
+      <div class="eyebrow" id="overviewTitle">APERÇU DU CHAMPIONNAT</div>
+      <div class="stats" style="margin-top:18px">
+        <div class="stat"><b id="statMatches">0</b><span id="matchesLabel">Matchs</span></div>
+        <div class="stat"><b id="statGoals">0</b><span id="goalsLabel">Buts</span></div>
+        <div class="stat"><b id="statPlayers">10</b><span id="playersLabel">Joueurs</span></div>
+      </div>
+      <div style="margin-top:20px"><span class="pill" id="updateLabel">Mise à jour</span><p id="updateText" style="color:var(--muted)">Les données affichées sont des exemples locaux, à compléter.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h3 id="playersTitle">Les joueurs</h3><p id="playersSub">Les deux équipes de l'école</p></div></div>
+    <div class="grid2">
+      <div class="card"><div class="section-head"><h3 id="teamATitle">Équipe A</h3><span class="pill">5 joueurs</span></div><div class="player-list" id="playersA"></div></div>
+      <div class="card"><div class="section-head"><h3 id="teamBTitle">Équipe B</h3><span class="pill">5 joueurs</span></div><div class="player-list" id="playersB"></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h3 id="standingsTitle">Classement</h3><p id="standingsSub">Calculé automatiquement depuis les résultats enregistrés</p></div></div>
+    <div class="table-wrap"><table><thead><tr><th id="thTeam">Équipe</th><th id="thPlayed">MJ</th><th id="thWon">V</th><th id="thDraw">N</th><th id="thLost">D</th><th id="thGF">BP</th><th id="thPts">Pts</th></tr></thead><tbody id="standingsBody"></tbody></table></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h3 id="matchesTitle">Résultats et calendrier</h3><p id="matchesSub">Les scores ajoutés par le directeur apparaîtront ici</p></div></div>
+    <div id="matchesList"></div>
+  </section>
+
+  <section class="section" id="adminSection">
+    <div class="section-head"><div><h3 id="adminTitle">Espace directeur</h3><p id="adminSub">Gérer les résultats et le calendrier</p></div><button class="secondary" id="adminToggle" onclick="toggleAdmin()">Ouvrir</button></div>
+    <div class="admin" id="adminPanel">
+      <div class="notice" id="securityNotice">Prototype GitHub Pages : ces modifications sont enregistrées uniquement dans ce navigateur. Ce panneau n'est PAS une authentification sécurisée. Pour publier des comptes et une administration protégés, il faut connecter Supabase (base de données + authentification + règles d'accès).</div>
+      <div class="card" style="margin-top:14px">
+        <h3 id="addMatchTitle">Ajouter un match</h3>
+        <form id="matchForm">
+          <div class="formgrid">
+            <div><label id="dateLabel" for="matchDate">Date</label><input id="matchDate" type="date" required></div>
+            <div><label id="statusLabel" for="matchStatus">Statut</label><select id="matchStatus"><option value="played">Terminé</option><option value="upcoming">À venir</option></select></div>
+            <div><label id="scoreALabel" for="scoreA">Buts équipe A</label><input id="scoreA" type="number" min="0" max="99" value="0" required></div>
+            <div><label id="scoreBLabel" for="scoreB">Buts équipe B</label><input id="scoreB" type="number" min="0" max="99" value="0" required></div>
+          </div>
+          <button type="submit" id="saveMatch">Enregistrer le match</button>
+        </form>
+        <div style="margin-top:14px"><button class="danger" onclick="resetData()" id="resetBtn">Réinitialiser les données locales</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="wrap footer"><strong>Madrasati Football</strong> — <span id="footerText">Unis par le sport. Respect, équipe et fair-play.</span></footer>
+<script>
+const teams = {
+ A:["Farouk","Larabase","Adlouni","Bahmini","Ziyad"],
+ B:["Anas","Moussaab","Bahja","Fadl","Batal"]
+};
+const translations = {
+ fr:{tagline:"Résultats • Joueurs • Statistiques",eyebrow:"SAISON SCOLAIRE • FOOTBALL",heroTitle:"Le football, l'esprit d'équipe.",heroDesc:"Suivez les résultats, les performances des joueurs et le classement de Madrasati Football au même endroit.",seasonPill:"Saison en cours",overviewTitle:"APERÇU DU CHAMPIONNAT",matchesLabel:"Matchs joués",goalsLabel:"Buts",playersLabel:"Joueurs",updateLabel:"Information",updateText:"Aucun résultat officiel n'est encore enregistré.",playersTitle:"Les joueurs",playersSub:"Les deux équipes de l'école",teamA:"Équipe A",teamB:"Équipe B",standingsTitle:"Classement",standingsSub:"Calculé automatiquement depuis les résultats enregistrés",thTeam:"Équipe",thPlayed:"MJ",thWon:"V",thDraw:"N",thLost:"D",thGF:"BP",thPts:"Pts",matchesTitle:"Résultats et calendrier",matchesSub:"Les scores ajoutés par le directeur apparaîtront ici",adminTitle:"Espace directeur",adminSub:"Gérer les résultats et le calendrier",open:"Ouvrir",close:"Fermer",securityNotice:"Prototype GitHub Pages : ces modifications sont enregistrées uniquement dans ce navigateur. Ce panneau n'est PAS une authentification sécurisée. Pour publier des comptes et une administration protégés, il faut connecter Supabase (base de données + authentification + règles d'accès).",addMatchTitle:"Ajouter un match",dateLabel:"Date",statusLabel:"Statut",played:"Terminé",upcoming:"À venir",scoreALabel:"Buts équipe A",scoreBLabel:"Buts équipe B",saveMatch:"Enregistrer le match",resetBtn:"Réinitialiser les données locales",empty:"Aucun match pour le moment.",playedText:"Terminé",upcomingText:"À venir",latestNone:"Aucun résultat officiel pour le moment. Le directeur peut ajouter un match dans l'espace admin.",footerText:"Unis par le sport. Respect, équipe et fair-play.",confirmReset:"Effacer tous les résultats enregistrés dans ce navigateur ?",teamALong:"Équipe A",teamBLong:"Équipe B",points:"points",goalsFor:"Buts marqués"},
+ ar:{tagline:"النتائج • اللاعبون • الإحصائيات",eyebrow:"الموسم الدراسي • كرة القدم",heroTitle:"كرة القدم، روح الفريق.",heroDesc:"تابع نتائج المباريات وأداء اللاعبين وترتيب Madrasati Football في مكان واحد.",seasonPill:"الموسم الحالي",overviewTitle:"ملخص البطولة",matchesLabel:"المباريات",goalsLabel:"الأهداف",playersLabel:"اللاعبون",updateLabel:"معلومة",updateText:"لم يتم تسجيل أي نتيجة رسمية بعد.",playersTitle:"اللاعبون",playersSub:"الفريقان ديال المدرسة",teamA:"الفريق A",teamB:"الفريق B",standingsTitle:"الترتيب",standingsSub:"كيتم حساب الترتيب تلقائياً حسب النتائج المسجلة",thTeam:"الفريق",thPlayed:"لعب",thWon:"فاز",thDraw:"تعادل",thLost:"خسر",thGF:"له",thPts:"النقاط",matchesTitle:"النتائج والبرنامج",matchesSub:"النتائج اللي غادي يزيد المدير غادي تبان هنا",adminTitle:"لوحة المدير",adminSub:"تسيير النتائج ومواعيد المباريات",open:"فتح",close:"إغلاق",securityNotice:"نسخة تجريبية على GitHub Pages: التغييرات كتتحفظ غير فهاد المتصفح. هادي ماشي حماية آمنة لتسجيل الدخول. باش تكون الحسابات ولوحة المدير محمية خاص ربط Supabase (قاعدة بيانات + تسجيل دخول + صلاحيات).",addMatchTitle:"إضافة مباراة",dateLabel:"التاريخ",statusLabel:"الحالة",played:"انتهت",upcoming:"قادمة",scoreALabel:"أهداف الفريق A",scoreBLabel:"أهداف الفريق B",saveMatch:"حفظ المباراة",resetBtn:"مسح البيانات المحلية",empty:"ما كايناش مباريات دابا.",playedText:"انتهت",upcomingText:"قادمة",latestNone:"ما تسجلات حتى نتيجة رسمية. المدير يقدر يزيد مباراة من لوحة المدير.",footerText:"متحدون بالرياضة. الاحترام، الفريق والروح الرياضية.",confirmReset:"واش متأكد بغيتي تمسح النتائج من هاد المتصفح؟",teamALong:"الفريق A",teamBLong:"الفريق B",points:"نقطة",goalsFor:"الأهداف المسجلة"}
+};
+let lang="fr", adminOpen=false;
+function loadMatches(){try{return JSON.parse(localStorage.getItem("mf_matches")||"[]")}catch(e){return []}}
+let matches=loadMatches();
+function save(){localStorage.setItem("mf_matches",JSON.stringify(matches));render()}
+function t(k){return translations[lang][k]||k}
+function toggleLang(){lang=lang==="fr"?"ar":"fr";document.documentElement.lang=lang==="ar"?"ar":"fr";document.body.classList.toggle("rtl",lang==="ar");render()}
+function toggleAdmin(){adminOpen=!adminOpen;document.getElementById("adminPanel").classList.toggle("show",adminOpen);document.getElementById("adminToggle").textContent=adminOpen?t("close"):t("open")}
+function render(){
+ const map={tagline:"tagline",eyebrow:"eyebrow",heroTitle:"heroTitle",heroDesc:"heroDesc",seasonPill:"seasonPill",overviewTitle:"overviewTitle",matchesLabel:"matchesLabel",goalsLabel:"goalsLabel",playersLabel:"playersLabel",updateLabel:"updateLabel",playersTitle:"playersTitle",playersSub:"playersSub",standingsTitle:"standingsTitle",standingsSub:"standingsSub",thTeam:"thTeam",thPlayed:"thPlayed",thWon:"thWon",thDraw:"thDraw",thLost:"thLost",thGF:"thGF",thPts:"thPts",matchesTitle:"matchesTitle",matchesSub:"matchesSub",adminTitle:"adminTitle",adminSub:"adminSub",securityNotice:"securityNotice",addMatchTitle:"addMatchTitle",dateLabel:"dateLabel",statusLabel:"statusLabel",scoreALabel:"scoreALabel",scoreBLabel:"scoreBLabel",saveMatch:"saveMatch",resetBtn:"resetBtn",footerText:"footerText"};
+ Object.keys(map).forEach(id=>{let el=document.getElementById(id);if(el)el.textContent=t(map[id])});
+ document.getElementById("teamAName").textContent=t("teamA");document.getElementById("teamBName").textContent=t("teamB");document.getElementById("teamATitle").textContent=t("teamA");document.getElementById("teamBTitle").textContent=t("teamB");
+ document.getElementById("adminToggle").textContent=adminOpen?t("close"):t("open");
+ document.querySelector('#matchStatus option[value="played"]').textContent=t("played");document.querySelector('#matchStatus option[value="upcoming"]').textContent=t("upcoming");
+ document.getElementById("playersA").innerHTML=teams.A.map((p,i)=>`<div class="player"><span>${i+1}. ${p}</span><small>A</small></div>`).join("");
+ document.getElementById("playersB").innerHTML=teams.B.map((p,i)=>`<div class="player"><span>${i+1}. ${p}</span><small>B</small></div>`).join("");
+ const played=matches.filter(m=>m.status==="played");let goals=played.reduce((s,m)=>s+m.a+m.b,0);
+ document.getElementById("statMatches").textContent=played.length;document.getElementById("statGoals").textContent=goals;document.getElementById("statPlayers").textContent=10;
+ document.getElementById("updateText").textContent=played.length?`${played.length} ${t("matchesLabel")} • ${goals} ${t("goalsLabel")}`:t("updateText");
+ const table={A:{name:t("teamA"),p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0},B:{name:t("teamB"),p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}};
+ played.forEach(m=>{let a=table.A,b=table.B;a.p++;b.p++;a.gf+=m.a;a.ga+=m.b;b.gf+=m.b;b.ga+=m.a;if(m.a>m.b){a.w++;b.l++;a.pts+=3}else if(m.a<m.b){b.w++;a.l++;b.pts+=3}else{a.d++;b.d++;a.pts++;b.pts++}});
+ let rows=Object.values(table).sort((a,b)=>b.pts-a.pts||((b.gf-b.ga)-(a.gf-a.ga)));
+ document.getElementById("standingsBody").innerHTML=rows.map(r=>`<tr><td><strong>${r.name}</strong></td><td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gf}</td><td><strong>${r.pts}</strong></td></tr>`).join("");
+ const sorted=[...matches].sort((a,b)=>a.date.localeCompare(b.date));
+ document.getElementById("matchesList").innerHTML=sorted.length?sorted.map(m=>`<div class="match"><div><div class="teams">${t("teamA")} <span style="color:var(--muted)">vs</span> ${t("teamB")}</div><div class="date">${m.date} • ${m.status==="played"?t("playedText"):t("upcomingText")}</div></div><div class="result">${m.status==="played"?m.a+" - "+m.b:"—"}</div></div>`).join(""):`<div class="card empty">${t("empty")}</div>`;
+ const latest=played.slice().sort((a,b)=>b.date.localeCompare(a.date))[0];
+ document.getElementById("latestResult").textContent=latest?`${t("teamA")} ${latest.a} – ${latest.b} ${t("teamB")} • ${latest.date}`:t("latestNone");
+}
+document.getElementById("matchForm").addEventListener("submit",function(e){e.preventDefault();const date=document.getElementById("matchDate").value;const status=document.getElementById("matchStatus").value;const a=Number(document.getElementById("scoreA").value),b=Number(document.getElementById("scoreB").value);if(!date||a<0||b<0)return;matches.push({date,status,a,b});save();this.reset();document.getElementById("scoreA").value=0;document.getElementById("scoreB").value=0;});
+function resetData(){if(confirm(t("confirmReset"))){matches=[];save()}}
+render();
+</script>
+</body>
+</html>
